@@ -66,7 +66,7 @@ nano_models.forEach(function (model) {
             unsignedTx.to = contractAddr;
             // Modify the attached data
             unsignedTx.data = data;
-
+            // Modify the chain ID
             unsignedTx.chainId = 137;
 
             // Create serializedTx and remove the "0x" prefix

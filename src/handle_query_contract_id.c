@@ -10,7 +10,6 @@ void handle_query_contract_id(void *parameters) {
     // For the first screen, display the plugin name.
     strlcpy(msg->name, PLUGIN_NAME, msg->nameLength);
 
-    // EDIT THIS: Adapt the cases by modifying the strings you pass to `strlcpy`.
     if (context->selectorIndex == BUY_FROM_AMM) {
         strlcpy(msg->version, "Buy from AMM", msg->versionLength);
         msg->result = ETH_PLUGIN_RESULT_OK;

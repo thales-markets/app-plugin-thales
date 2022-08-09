@@ -1,6 +1,5 @@
 #include "thales_plugin.h"
 
-// EDIT THIS: Remove this function and write your own handlers!
 static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *context) {
     switch (context->next_param) {
         case MARKET:  // market
@@ -42,7 +41,6 @@ void handle_provide_parameter(void *parameters) {
 
     msg->result = ETH_PLUGIN_RESULT_OK;
 
-    // EDIT THIS: adapt the cases and the names of the functions.
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
             handle_buy_from_amm(msg, context);
