@@ -38,7 +38,6 @@ const abi = require(abi_path);
 // });
 
 // Test from constructed transaction
-// EDIT THIS: build your own test
 nano_models.forEach(function (model) {
     test(
         "[Nano " + model.letter + "] Buy from AMM",
