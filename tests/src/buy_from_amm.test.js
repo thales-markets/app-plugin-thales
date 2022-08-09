@@ -50,7 +50,7 @@ nano_models.forEach(function (model) {
             const position = 0;
             const amount = parseEther("183.23");
             const expectedPayout = parseUnits("50.692244", 6);
-            const slippage = parseEther("0.01");
+            const slippage = parseEther("0.02");
 
             const { data } = await contract.populateTransaction.buyFromAMM(
                 market,
