@@ -15,8 +15,10 @@ static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *con
             copy_parameter(context->amount, msg->parameter, sizeof(context->amount));
             context->next_param = EXPECTED_PAYOUT;
             break;
-        case EXPECTED_PAYOUT: // expected payout
-            copy_parameter(context->expected_payout, msg->parameter, sizeof(context->expected_payout));
+        case EXPECTED_PAYOUT:  // expected payout
+            copy_parameter(context->expected_payout,
+                           msg->parameter,
+                           sizeof(context->expected_payout));
             context->next_param = UNEXPECTED_PARAMETER;
             break;
         // Keep this
@@ -26,7 +28,6 @@ static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *con
             break;
     }
 }
-
 
 void handle_provide_parameter(void *parameters) {
     ethPluginProvideParameter_t *msg = (ethPluginProvideParameter_t *) parameters;
