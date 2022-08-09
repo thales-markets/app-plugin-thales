@@ -25,7 +25,6 @@ typedef enum {
     POSITION,
     AMOUNT,
     EXPECTED_PAYOUT,
-    SLIPPAGE,
     UNEXPECTED_PARAMETER,
 } parameter;
 
@@ -38,7 +37,6 @@ typedef struct context_t {
     uint8_t position[INT256_LENGTH];
     uint8_t amount[INT256_LENGTH];
     uint8_t expected_payout[INT256_LENGTH];
-    uint8_t slippage[INT256_LENGTH];
 
     char ticker[MAX_TICKER_LEN];
     uint8_t decimals;
