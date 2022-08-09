@@ -1,0 +1,17 @@
+{
+    "chainId": 1,
+    "contracts": [
+        {
+            "address": "0x9b6d76b1c6140fbb0abc9c4a348bff4e4e8a1213",
+            "contractName": "ThalesAMM",
+            "selectors": {
+                "0x8875eb84": {
+                    "erc20OfInterest": [],
+                    "method": "buyFromAMM",
+                    "plugin": "Thales"
+                }
+            }
+        }
+    ],
+    "name": "Thales"
+}
