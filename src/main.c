@@ -29,9 +29,13 @@
 // uint256 additionalSlippage) Selector: 0x8875eb84
 static const uint32_t THALES_BUY_FROM_AMM_SELECTOR = 0x8875eb84;
 
-const uint32_t THALES_SELECTORS[NUM_THALES_SELECTORS] = {
-    THALES_BUY_FROM_AMM_SELECTOR,
-};
+// *** Thales Market contract methods ***
+// Function: exerciseOptions()
+// MethodID: 0x85149258
+static const uint32_t THALES_EXERCISE_POSITION_SELECTOR = 0x85149258;
+
+const uint32_t THALES_SELECTORS[NUM_THALES_SELECTORS] = {THALES_BUY_FROM_AMM_SELECTOR,
+                                                         THALES_EXERCISE_POSITION_SELECTOR};
 
 const uint32_t AMM_POSITION_UP[INT256_LENGTH] = {0x0000000000,
                                                  0x0000000000,

@@ -1,5 +1,5 @@
 {
-    "chainId": 1,
+    "chainId": 137,
     "contracts": [
         {
             "address": "0x9b6d76b1c6140fbb0abc9c4a348bff4e4e8a1213",
@@ -8,6 +8,17 @@
                 "0x8875eb84": {
                     "erc20OfInterest": [],
                     "method": "buyFromAMM",
+                    "plugin": "Thales"
+                }
+            }
+        },
+        {
+            "address": "0x7465c5d60d3d095443cf9991da03304a30d42eae",
+            "contractName": "PositionalMarketMastercopy",
+            "selectors": {
+                "0x85149258": {
+                    "erc20OfInterest": [],
+                    "method": "exerciseOptions",
                     "plugin": "Thales"
                 }
             }

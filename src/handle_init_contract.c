@@ -49,6 +49,8 @@ void handle_init_contract(void *parameters) {
         case BUY_FROM_AMM:
             context->next_param = MARKET;
             break;
+        case EXERCISE_POSITION:
+            break;
         // Keep this
         default:
             PRINTF("Missing selectorIndex: %d\n", context->selectorIndex);

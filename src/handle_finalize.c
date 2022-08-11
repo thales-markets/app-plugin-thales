@@ -6,7 +6,17 @@ void handle_finalize(void *parameters) {
 
     msg->uiType = ETH_UI_TYPE_GENERIC;
 
-    msg->numScreens = 4;
+    switch (context->selectorIndex) {
+        case BUY_FROM_AMM:
+            msg->numScreens = 3;
+            break;
+        case EXERCISE_POSITION:
+            msg->numScreens = 1;
+            break;
+        default:
+            msg->numScreens = 1;
+            break;
+    }
 
     msg->result = ETH_PLUGIN_RESULT_OK;
 }

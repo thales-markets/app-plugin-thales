@@ -7,7 +7,14 @@ static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *con
             context->next_param = POSITION;
             break;
         case POSITION:  // position
-            copy_parameter(context->position, msg->parameter, sizeof(context->position));
+            if (memcmp(msg->parameter, AMM_POSITION_UP, INT256_LENGTH) == 0) {
+                strlcpy(context->ticker, "UP ", sizeof(context->ticker));
+            } else if (memcmp(msg->parameter, AMM_POSITION_DOWN, INT256_LENGTH) == 0) {
+                strlcpy(context->ticker, "DOWN ", sizeof(context->ticker));
+            } else {
+                strlcpy(context->ticker, "??? ", sizeof(context->ticker));
+            }
+            context->decimals = WEI_TO_ETHER;
             context->next_param = AMOUNT;
             break;
         case AMOUNT:  // amount
@@ -18,8 +25,21 @@ static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *con
             copy_parameter(context->expected_payout,
                            msg->parameter,
                            sizeof(context->expected_payout));
-            context->next_param = UNEXPECTED_PARAMETER;
+            context->next_param = SLIPPAGE;
             break;
+        case SLIPPAGE:  // slippage
+            context->next_param = EXPECTED_PAYOUT;
+            break;
+        // Keep this
+        default:
+            PRINTF("Param not supported: %d\n", context->next_param);
+            msg->result = ETH_PLUGIN_RESULT_ERROR;
+            break;
+    }
+}
+
+static void handle_exercise_position(ethPluginProvideParameter_t *msg, context_t *context) {
+    switch (context->next_param) {
         // Keep this
         default:
             PRINTF("Param not supported: %d\n", context->next_param);
@@ -44,6 +64,9 @@ void handle_provide_parameter(void *parameters) {
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
             handle_buy_from_amm(msg, context);
+            break;
+        case EXERCISE_POSITION:
+            handle_exercise_position(msg, context);
             break;
         default:
             PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
