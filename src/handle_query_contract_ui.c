@@ -80,10 +80,10 @@ void handle_query_contract_ui(void *parameters) {
                     break;
             }
             break;
-        case 2:
+        case 1:
             set_buy_ui(msg, context);
             break;
-        case 3:
+        case 2:
             set_pay_ui(msg, context);
             break;
         // Keep this
