@@ -5,7 +5,8 @@ import { ethers } from "ethers";
 
 const contractAddr = "0x7465c5d60d3d095443cf9991da03304a30d42eae";
 const pluginName = "thales";
-const abi_path = `../${pluginName}/abis/` + contractAddr + ".json";
+const testNetwork = "polygon";
+const abi_path = `../networks/${testNetwork}/${pluginName}/abis/` + contractAddr + ".json";
 const abi = require(abi_path);
 
 // Test from constructed transaction

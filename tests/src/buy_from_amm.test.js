@@ -6,7 +6,8 @@ import { parseEther, parseUnits } from "ethers/lib/utils";
 
 const contractAddr = "0x9b6d76b1c6140fbb0abc9c4a348bff4e4e8a1213";
 const pluginName = "thales";
-const abi_path = `../${pluginName}/abis/` + contractAddr + ".json";
+const testNetwork = "polygon";
+const abi_path = `../networks/${testNetwork}/${pluginName}/abis/` + contractAddr + ".json";
 const abi = require(abi_path);
 
 // Test from constructed transaction
