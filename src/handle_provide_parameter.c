@@ -36,7 +36,9 @@ static void handle_amm_buy_sell(ethPluginProvideParameter_t *msg, context_t *con
             context->next_param = EXPECTED_PAYOUT;
             break;
         case EXPECTED_PAYOUT:  // expected payout
-            copy_parameter(context->expected_payout, sg->parameter, sizeof(context->expected_payout));
+            copy_parameter(context->expected_payout,
+                           msg->parameter,
+                           sizeof(context->expected_payout));
             context->next_param = SLIPPAGE;
             break;
         case SLIPPAGE:  // slippage
