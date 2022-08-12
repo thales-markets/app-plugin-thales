@@ -1,7 +1,7 @@
 # Ledger Thales Plugin
 
 [![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Code%20style%20check/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/lint-workflow.yml)
-[![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Compilation%20%26%20tests/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions?query=workflow:"Compilation+&+tests")
+[![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Compilation%20%26%20tests/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/ci-workflow.yml)
 
 This is a plugin for the Ethereum application which helps parsing and displaying relevant information when signing a Thales transaction.
 
@@ -103,5 +103,5 @@ yarn test                       # run the script test
 
 The flow processed in [GitHub Actions](https://github.com/features/actions) is the following:
 
--   Code formatting with [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
--   Compilation of the application for Ledger Nano S, Ledger Nano X and Ledger Nano S+ in [ledger-app-builder](https://github.com/LedgerHQ/ledger-app-builder)
+-   Code formatting with [clang-format](http://clang.llvm.org/docs/ClangFormat.html).
+-   Compilation of the application for Ledger Nano S, Ledger Nano X, and Ledger Nano S+ in [ledger-app-builder](https://github.com/LedgerHQ/ledger-app-builder) and running the tests.
