@@ -1,11 +1,9 @@
-# Badges
-
-[![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Compilation%20%26%20tests/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/lint-workflow.yml)
-[![Compilation & tests](https://github.com/blooo-io/app-plugin-1inch/actions/workflows/ci-workflow.yml/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/ci-workflow.yml)
-
 # Ledger Thales Plugin
 
-This is a plugin for the Ethereum application which helps parsing and displaying relevant information when signing a 1inch transaction.
+[![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Code%20style%20check/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/lint-workflow.yml)
+[![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Compilation%20%26%20tests/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/ci-workflow.yml)
+
+This is a plugin for the Ethereum application which helps parsing and displaying relevant information when signing a Thales transaction.
 
 ## Prerequisites
 
@@ -66,15 +64,15 @@ Smart contracts covered by this plugin are:
 Go to the plugin-tools folder and run the `./start.sh` script.
 
 ```shell
-cd plugin-tools  # go to plugin folder
-./start.sh       # run the script start.sh
+cd plugin-tools     # go to plugin folder
+./start.sh          # run the script start.sh
 ```
 
 The script will build a docker image and attach a console.
 When the docker image is running go to the "app-plugin-thales" folder and build the `.elf` files.
 
 ```shell
-cd app-plugin-thales/tests      # go to the tests folder in app-plugin-1inch
+cd app-plugin-thales/tests      # go to the tests folder in app-plugin-thales
 ./build_local_test_elfs.sh      # run the script build_local_test_elfs.sh
 ```
 
