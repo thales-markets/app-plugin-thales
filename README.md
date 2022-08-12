@@ -15,7 +15,7 @@ Clone the plugin to a new folder.
 git clone https://github.com/thales-markets/app-plugin-thales.git
 ```
 
-Then in the same folder clone two more repositories, which is the plugin-tools and app-ethereum.
+Then in the same folder clone two more repositories, which is the "plugin-tools" and "app-ethereum".
 
 ```shell
 git clone https://github.com/LedgerHQ/plugin-tools.git                          # plugin-tools
@@ -29,7 +29,7 @@ Install [Docker](https://docs.docker.com/get-docker/) and [Docker compose](https
 In the same folder as above, simple type:
 
 ```shell
-cd plugin-tools     # go to plugin folder
+cd plugin-tools     # go to plugin-tools folder
 ./start.sh          # connect to the container
 ```
 
@@ -64,7 +64,7 @@ Smart contracts covered by this plugin are:
 Go to the plugin-tools folder and run the `./start.sh` script.
 
 ```shell
-cd plugin-tools     # go to plugin folder
+cd plugin-tools     # go to plugin-tools folder
 ./start.sh          # run the script start.sh
 ```
 
