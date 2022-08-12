@@ -5,13 +5,16 @@
 #include <string.h>
 
 // Number of selectors defined in this plugin. Should match the enum `selector_t`.
-#define NUM_THALES_SELECTORS 4
+#define NUM_THALES_SELECTORS 5
 
 // Name of the plugin.
 #define PLUGIN_NAME "Thales"
 
 extern const uint8_t AMM_POSITION_UP[INT256_LENGTH];
 extern const uint8_t AMM_POSITION_DOWN[INT256_LENGTH];
+extern const uint8_t AMM_POSITION_IN[INT256_LENGTH];
+extern const uint8_t AMM_POSITION_OUT[INT256_LENGTH];
+extern const uint8_t RANGED_AMM_ADDRESS[ADDRESS_LENGTH];
 
 // Enumeration of the different selectors possible.
 // Should follow the exact same order as the array declared in main.c
@@ -19,7 +22,8 @@ typedef enum {
     BUY_FROM_AMM = 0,
     BUY_FROM_AMM_WITH_REFERRER,
     SELL_TO_AMM,
-    EXERCISE_POSITION,
+    EXERCISE_POSITIONS,
+    EXERCISE_RANGED_POSITIONS
 } thalesSelector_t;
 
 // Enumeration used to parse the smart contract data.
@@ -48,6 +52,9 @@ typedef struct context_t {
 
     // For parsing data.
     uint8_t next_param;  // Set to be the next param we expect to parse.
+
+    // For detecting contract for interaction.
+    uint8_t contractAddress[ADDRESS_LENGTH];
 
     // For both parsing and display.
     thalesSelector_t selectorIndex;

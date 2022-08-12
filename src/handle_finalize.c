@@ -12,7 +12,8 @@ void handle_finalize(void *parameters) {
         case SELL_TO_AMM:
             msg->numScreens = 3;
             break;
-        case EXERCISE_POSITION:
+        case EXERCISE_POSITIONS:
+        case EXERCISE_RANGED_POSITIONS:
             msg->numScreens = 1;
             break;
         default:

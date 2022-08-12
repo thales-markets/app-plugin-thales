@@ -20,8 +20,9 @@ void handle_query_contract_id(void *parameters) {
             strlcpy(msg->version, "Sell to AMM", msg->versionLength);
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
-        case EXERCISE_POSITION:
-            strlcpy(msg->version, "Exercise position", msg->versionLength);
+        case EXERCISE_POSITIONS:
+        case EXERCISE_RANGED_POSITIONS:
+            strlcpy(msg->version, "Exercise positions", msg->versionLength);
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
         default:

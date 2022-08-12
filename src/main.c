@@ -27,25 +27,32 @@
 // *** Thales AMM contract methods ***
 // Function: buyFromAMM(address market, uint8 position, uint256 amount, uint256 expectedPayout,
 // uint256 additionalSlippage)
-// Selector: 0x8875eb84
+// MethodID: 0x8875eb84
 static const uint32_t THALES_BUY_FROM_AMM_SELECTOR = 0x8875eb84;
 // Function: buyFromAMMWithReferrer(address market, uint8 position, uint256 amount, uint256
 // expectedPayout, uint256 additionalSlippage, address _referrer)
-// Selector: 0x9f916c9f
+// MethodID: 0x9f916c9f
 static const uint32_t THALES_BUY_FROM_AMM_WITH_REFERRER_SELECTOR = 0x9f916c9f;
 // Function: sellToAMM(address market, uint8 position, uint256 amount, uint256 expectedPayout,
-// uint256 additionalSlippage) Selector: 0x3ce1108d
+// uint256 additionalSlippage)
+// MethodID: 0x3ce1108d
 static const uint32_t THALES_SELL_TO_AMM_SELECTOR = 0x3ce1108d;
 
 // *** Thales Market contract methods ***
 // Function: exerciseOptions()
 // MethodID: 0x85149258
-static const uint32_t THALES_EXERCISE_POSITION_SELECTOR = 0x85149258;
+static const uint32_t THALES_EXERCISE_POSITIONS_SELECTOR = 0x85149258;
+
+// *** Thales Ranged Market contract methods ***
+// Function: exercisePositions()
+// MethodID: 0xd06a750c
+static const uint32_t THALES_EXERCISE_RANGED_POSITIONS_SELECTOR = 0xd06a750c;
 
 const uint32_t THALES_SELECTORS[NUM_THALES_SELECTORS] = {THALES_BUY_FROM_AMM_SELECTOR,
                                                          THALES_BUY_FROM_AMM_WITH_REFERRER_SELECTOR,
                                                          THALES_SELL_TO_AMM_SELECTOR,
-                                                         THALES_EXERCISE_POSITION_SELECTOR};
+                                                         THALES_EXERCISE_POSITIONS_SELECTOR,
+                                                         THALES_EXERCISE_RANGED_POSITIONS_SELECTOR};
 
 const uint8_t AMM_POSITION_UP[INT256_LENGTH] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -56,6 +63,20 @@ const uint8_t AMM_POSITION_DOWN[INT256_LENGTH] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
 };
+
+const uint8_t AMM_POSITION_IN[INT256_LENGTH] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
+
+const uint8_t AMM_POSITION_OUT[INT256_LENGTH] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+};
+
+const uint8_t RANGED_AMM_ADDRESS[ADDRESS_LENGTH] = {0xE8, 0xE0, 0x22, 0x40, 0x55, 0x05, 0xA9,
+                                                    0xF2, 0xB0, 0xB7, 0x45, 0x2C, 0x84, 0x4F,
+                                                    0x1E, 0x64, 0x42, 0x38, 0x49, 0xFC};
 
 // Function to dispatch calls from the ethereum app.
 void dispatch_plugin_calls(int message, void *parameters) {

@@ -32,6 +32,17 @@
                     "plugin": "Thales"
                 }
             }
+        },
+        {
+            "address": "0x75c7671d046268c11b5f55ba75df2b6d14774b1c",
+            "contractName": "RangedMarketMastercopy",
+            "selectors": {
+                "0xd06a750c": {
+                    "erc20OfInterest": [],
+                    "method": "exercisePositions",
+                    "plugin": "Thales"
+                }
+            }
         }
     ],
     "name": "Thales"

@@ -12,7 +12,7 @@ const abi = require(abi_path);
 // Test from constructed transaction
 nano_models.forEach(function (model) {
     test(
-        "[Nano " + model.letter + "] Exercise position",
+        "[Nano " + model.letter + "] Exercise positions",
         zemu(model, async (sim, eth) => {
             const contract = new ethers.Contract(contractAddr, abi);
 
@@ -38,7 +38,7 @@ nano_models.forEach(function (model) {
             await waitForAppScreen(sim);
             // Navigate the display by pressing the right button 10 times, then pressing both buttons to accept the transaction.
             // EDIT THIS: modify `10` to fix the number of screens you are expecting to navigate through.
-            await sim.navigateAndCompareSnapshots(".", model.name + "_exercise_position", [right_clicks, 0]);
+            await sim.navigateAndCompareSnapshots(".", model.name + "_exercise_positions", [right_clicks, 0]);
 
             await tx;
         })

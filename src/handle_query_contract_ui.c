@@ -77,7 +77,8 @@ void handle_query_contract_ui(void *parameters) {
                 case SELL_TO_AMM:
                     set_market_ui(msg, context);
                     break;
-                case EXERCISE_POSITION:
+                case EXERCISE_POSITIONS:
+                case EXERCISE_RANGED_POSITIONS:
                     set_amount_with_all_ui(msg);
                     break;
                 default:

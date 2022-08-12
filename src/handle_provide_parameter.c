@@ -41,7 +41,7 @@ static void handle_amm_buy_sell(ethPluginProvideParameter_t *msg, context_t *con
     }
 }
 
-static void handle_exercise_position(ethPluginProvideParameter_t *msg, context_t *context) {
+static void handle_exercise_positions(ethPluginProvideParameter_t *msg, context_t *context) {
     switch (context->next_param) {
         // Keep this
         default:
@@ -64,14 +64,17 @@ void handle_provide_parameter(void *parameters) {
 
     msg->result = ETH_PLUGIN_RESULT_OK;
 
+    PRINTF("Contract address: %.*H\n", ADDRESS_LENGTH, context->contractAddress);
+
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
         case BUY_FROM_AMM_WITH_REFERRER:
         case SELL_TO_AMM:
             handle_amm_buy_sell(msg, context);
             break;
-        case EXERCISE_POSITION:
-            handle_exercise_position(msg, context);
+        case EXERCISE_POSITIONS:
+        case EXERCISE_RANGED_POSITIONS:
+            handle_exercise_positions(msg, context);
             break;
         default:
             PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
