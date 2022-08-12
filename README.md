@@ -46,7 +46,7 @@ Still in the terminal, compile the Ethereum app:
 
 ```shell
 cd app-ethereum     # go to app-ethereum folder
-make                # compile Ethereum app
+make                # compile the Ethereum app
 ```
 
 If everything goes well, you should end with:
