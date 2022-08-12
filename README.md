@@ -1,32 +1,95 @@
-# app-plugin-boilerplate
+# Badges
 
-This repo is a meant to be a forkable example of a plugin.
+[![Compilation & tests](https://github.com/thales-markets/app-plugin-thales/workflows/Compilation%20%26%20tests/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/lint-workflow.yml)
+[![Compilation & tests](https://github.com/blooo-io/app-plugin-1inch/actions/workflows/ci-workflow.yml/badge.svg)](https://github.com/thales-markets/app-plugin-thales/actions/workflows/ci-workflow.yml)
 
-Plugins are lightweight applications that go hand-in-hand with the Ethereum
-Application on a Nano S / X device.
+# Ledger Thales Plugin
 
-They allow users to safely interact with smart contracts by parsing the
-transaction data and displaying its content in a human readable way. This is
-done on a "per contract" basis, meaning a plugin is required for every DApp.
+This is a plugin for the Ethereum application which helps parsing and displaying relevant information when signing a 1inch transaction.
 
-The code has been commented, and special "EDIT THIS" comments indicate where
-developers are expected to adapt the code to their own needs.
+## Prerequisites
 
-It is STRONGLY recommended to follow the
-[plugin guide](https://developers.ledger.com/docs/dapp/nano-plugin/overview/)
-in order to better understand the flow and the context for plugins.
+### Clone repositories
 
-## Ethereum SDK
+Clone the plugin to a new folder.
 
-Ethereum plugins need the [Ethereum SDK](https://github.com/LedgerHQ/ethereum-plugin-sdk).
-You can use the `ETHEREUM_PLUGIN_SDK` variable to point to the directory where you cloned
-this repository. By default, the `Makefile` expects it to be at the root directory of this
-plugin repository, by the `ethereum-plugin-sdk` name.
+```shell
+git clone https://github.com/thales-markets/app-plugin-thales.git
+```
 
-This repository is deliberately **not** a submodule. You can see that the CI workflows
-clone and checkout either the latest `master` or on `develop` references. This ensures
-the code is compiled and tested on the latest version of the SDK.
+Then in the same folder clone two more repositories, which is the plugin-tools and app-ethereum.
 
-## Formatting
+```shell
+git clone https://github.com/LedgerHQ/plugin-tools.git                          # plugin-tools
+git clone --recurse-submodules https://github.com/LedgerHQ/app-ethereum.git     # app-ethereum
+```
 
-The C source code is expected to be formatted with `clang-format` 11.0.0 or higher.
+### Connect to the container
+
+Install [Docker](https://docs.docker.com/get-docker/) and [Docker compose](https://docs.docker.com/compose/install/).
+
+In the same folder as above, simple type:
+
+```shell
+cd plugin-tools     # go to plugin folder
+./start.sh          # connect to the container
+```
+
+### Compile the Ethereum app
+
+Still in the terminal, compile the Ethereum app:
+
+```shell
+cd app-ethereum     # go to app-ethereum folder
+make                # compile Ethereum app
+```
+
+## Documentation
+
+It is STRONGLY recommended to follow the [plugin guide](https://developers.ledger.com/docs/dapp/nano-plugin/overview/) in order to better understand the flow and the context for plugins.
+
+Need more information about the interface, the architecture, or general stuff about ethereum plugins? You can find more about them in the [ethereum-app documentation](https://github.com/LedgerHQ/app-ethereum/blob/master/doc/ethapp_plugins.asc).
+
+## Smart Contracts
+
+Smart contracts covered by this plugin are:
+
+| Network | Name          | Smart Contract                               |
+| ------- | ------------- | -------------------------------------------- |
+| Polygon | AMM           | `0x9b6d76B1C6140FbB0ABc9C4a348BFf4e4e8a1213` |
+| Polygon | Ranged AMM    | `0xe8e022405505a9F2b0B7452C844F1e64423849fC` |
+| Polygon | Market        | `0x7465c5d60d3d095443CF9991Da03304A30D42Eae` |
+| Polygon | Ranged Market | `0x75c7671d046268c11b5f55bA75DF2B6d14774B1C` |
+
+## Build
+
+Go to the plugin-tools folder and run the `./start.sh` script.
+
+```shell
+cd plugin-tools  # go to plugin folder
+./start.sh       # run the script start.sh
+```
+
+The script will build a docker image and attach a console.
+When the docker image is running go to the "app-plugin-thales" folder and build the `.elf` files.
+
+```shell
+cd app-plugin-thales/tests      # go to the tests folder in app-plugin-1inch
+./build_local_test_elfs.sh      # run the script build_local_test_elfs.sh
+```
+
+## Tests
+
+To test the plugin go to the tests folder from the "app-plugin-thales" and run the script `test`
+
+```shell
+cd app-plugin-thales/tests      # go to the tests folder in app-plugin-thales
+yarn test                       # run the script test
+```
+
+## Continuous Integration
+
+The flow processed in [GitHub Actions](https://github.com/features/actions) is the following:
+
+-   Code formatting with [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+-   Compilation of the application for Ledger Nano S, Ledger Nano X and Ledger Nano S+ in [ledger-app-builder](https://github.com/LedgerHQ/ledger-app-builder)
