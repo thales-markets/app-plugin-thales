@@ -47,6 +47,7 @@ void handle_init_contract(void *parameters) {
     // Set `next_param` to be the first field we expect to parse.
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
+        case BUY_FROM_AMM_WITH_REFERRER:
             context->next_param = MARKET;
             break;
         case EXERCISE_POSITION:

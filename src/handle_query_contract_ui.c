@@ -71,6 +71,7 @@ void handle_query_contract_ui(void *parameters) {
         case 0:
             switch (context->selectorIndex) {
                 case BUY_FROM_AMM:
+                case BUY_FROM_AMM_WITH_REFERRER:
                     set_market_ui(msg, context);
                     break;
                 case EXERCISE_POSITION:

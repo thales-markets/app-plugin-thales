@@ -5,18 +5,19 @@
 #include <string.h>
 
 // Number of selectors defined in this plugin. Should match the enum `selector_t`.
-#define NUM_THALES_SELECTORS 2
+#define NUM_THALES_SELECTORS 3
 
 // Name of the plugin.
 #define PLUGIN_NAME "Thales"
 
-extern const uint32_t AMM_POSITION_UP[INT256_LENGTH];
-extern const uint32_t AMM_POSITION_DOWN[INT256_LENGTH];
+extern const uint8_t AMM_POSITION_UP[INT256_LENGTH];
+extern const uint8_t AMM_POSITION_DOWN[INT256_LENGTH];
 
 // Enumeration of the different selectors possible.
 // Should follow the exact same order as the array declared in main.c
 typedef enum {
     BUY_FROM_AMM = 0,
+    BUY_FROM_AMM_WITH_REFERRER,
     EXERCISE_POSITION,
 } thalesSelector_t;
 
@@ -27,6 +28,7 @@ typedef enum {
     AMOUNT,
     EXPECTED_PAYOUT,
     SLIPPAGE,
+    REFERRER,
     UNEXPECTED_PARAMETER,
 } parameter;
 

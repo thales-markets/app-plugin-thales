@@ -12,6 +12,7 @@ void handle_query_contract_id(void *parameters) {
 
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
+        case BUY_FROM_AMM_WITH_REFERRER:
             strlcpy(msg->version, "Buy from AMM", msg->versionLength);
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;

@@ -9,6 +9,11 @@
                     "erc20OfInterest": [],
                     "method": "buyFromAMM",
                     "plugin": "Thales"
+                },
+                "0x9f916c9f": {
+                    "erc20OfInterest": [],
+                    "method": "buyFromAMMWithReferrer",
+                    "plugin": "Thales"
                 }
             }
         },

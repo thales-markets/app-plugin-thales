@@ -28,7 +28,10 @@ static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *con
             context->next_param = SLIPPAGE;
             break;
         case SLIPPAGE:  // slippage
-            context->next_param = EXPECTED_PAYOUT;
+            context->next_param = REFERRER;
+            break;
+        case REFERRER:  // referrer
+            context->next_param = UNEXPECTED_PARAMETER;
             break;
         // Keep this
         default:
@@ -63,6 +66,7 @@ void handle_provide_parameter(void *parameters) {
 
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
+        case BUY_FROM_AMM_WITH_REFERRER:
             handle_buy_from_amm(msg, context);
             break;
         case EXERCISE_POSITION:
