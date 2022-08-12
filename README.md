@@ -9,13 +9,13 @@ This is a plugin for the Ethereum application which helps parsing and displaying
 
 ### Clone repositories
 
-Clone the plugin to a new folder.
+Clone the plugin to a new folder:
 
 ```shell
 git clone https://github.com/thales-markets/app-plugin-thales.git
 ```
 
-Then in the same folder clone two more repositories, which is the "plugin-tools" and "app-ethereum".
+Then in the same folder clone two more repositories, which is the "plugin-tools" and "app-ethereum":
 
 ```shell
 git clone https://github.com/LedgerHQ/plugin-tools.git                          # plugin-tools
@@ -33,6 +33,13 @@ cd plugin-tools     # go to plugin-tools folder
 ./start.sh          # connect to the container
 ```
 
+You are now connected to the container.
+At the prompt, `ls` gives:
+
+```shell
+app-ethereum    plugin-tools
+```
+
 ### Compile the Ethereum app
 
 Still in the terminal, compile the Ethereum app:
@@ -40,6 +47,13 @@ Still in the terminal, compile the Ethereum app:
 ```shell
 cd app-ethereum     # go to app-ethereum folder
 make                # compile Ethereum app
+```
+
+If everything goes well, you should end with:
+
+```shell
+...
+[LINK] bin/app.elf
 ```
 
 ## Documentation
