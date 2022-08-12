@@ -7,13 +7,27 @@ static void handle_amm_buy_sell(ethPluginProvideParameter_t *msg, context_t *con
             context->next_param = POSITION;
             break;
         case POSITION:  // position
-            if (memcmp(msg->parameter, AMM_POSITION_UP, INT256_LENGTH) == 0) {
-                strlcpy(context->ticker, "UP ", sizeof(context->ticker));
-            } else if (memcmp(msg->parameter, AMM_POSITION_DOWN, INT256_LENGTH) == 0) {
-                strlcpy(context->ticker, "DOWN ", sizeof(context->ticker));
+
+            if (memcmp(msg->pluginSharedRO->txContent->destination,
+                       RANGED_AMM_ADDRESS,
+                       ADDRESS_LENGTH) == 0) {
+                if (memcmp(msg->parameter, AMM_POSITION_IN, INT256_LENGTH) == 0) {
+                    strlcpy(context->ticker, "IN ", sizeof(context->ticker));
+                } else if (memcmp(msg->parameter, AMM_POSITION_OUT, INT256_LENGTH) == 0) {
+                    strlcpy(context->ticker, "OUT ", sizeof(context->ticker));
+                } else {
+                    strlcpy(context->ticker, "??? ", sizeof(context->ticker));
+                }
             } else {
-                strlcpy(context->ticker, "??? ", sizeof(context->ticker));
+                if (memcmp(msg->parameter, AMM_POSITION_UP, INT256_LENGTH) == 0) {
+                    strlcpy(context->ticker, "UP ", sizeof(context->ticker));
+                } else if (memcmp(msg->parameter, AMM_POSITION_DOWN, INT256_LENGTH) == 0) {
+                    strlcpy(context->ticker, "DOWN ", sizeof(context->ticker));
+                } else {
+                    strlcpy(context->ticker, "??? ", sizeof(context->ticker));
+                }
             }
+
             context->decimals = WEI_TO_ETHER;
             context->next_param = AMOUNT;
             break;
@@ -63,8 +77,6 @@ void handle_provide_parameter(void *parameters) {
            msg->parameter);
 
     msg->result = ETH_PLUGIN_RESULT_OK;
-
-    PRINTF("Contract address: %.*H\n", ADDRESS_LENGTH, context->contractAddress);
 
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:

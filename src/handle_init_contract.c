@@ -44,10 +44,6 @@ void handle_init_contract(void *parameters) {
         return;
     }
 
-    copy_address(context->contractAddress,
-                 msg->pluginSharedRO->txContent->destination,
-                 ADDRESS_LENGTH);
-
     // Set `next_param` to be the first field we expect to parse.
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:

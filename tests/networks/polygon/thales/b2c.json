@@ -23,6 +23,27 @@
             }
         },
         {
+            "address": "0xe8e022405505a9f2b0b7452c844f1e64423849fc",
+            "contractName": "RangedMarketsAMM",
+            "selectors": {
+                "0x8875eb84": {
+                    "erc20OfInterest": [],
+                    "method": "buyFromAMM",
+                    "plugin": "Thales"
+                },
+                "0x9f916c9f": {
+                    "erc20OfInterest": [],
+                    "method": "buyFromAMMWithReferrer",
+                    "plugin": "Thales"
+                },
+                "0x3ce1108d": {
+                    "erc20OfInterest": [],
+                    "method": "sellToAMM",
+                    "plugin": "Thales"
+                }
+            }
+        },
+        {
             "address": "0x7465c5d60d3d095443cf9991da03304a30d42eae",
             "contractName": "PositionalMarketMastercopy",
             "selectors": {

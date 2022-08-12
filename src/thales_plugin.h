@@ -53,9 +53,6 @@ typedef struct context_t {
     // For parsing data.
     uint8_t next_param;  // Set to be the next param we expect to parse.
 
-    // For detecting contract for interaction.
-    uint8_t contractAddress[ADDRESS_LENGTH];
-
     // For both parsing and display.
     thalesSelector_t selectorIndex;
 } context_t;
