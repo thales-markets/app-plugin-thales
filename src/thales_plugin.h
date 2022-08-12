@@ -5,7 +5,7 @@
 #include <string.h>
 
 // Number of selectors defined in this plugin. Should match the enum `selector_t`.
-#define NUM_THALES_SELECTORS 3
+#define NUM_THALES_SELECTORS 4
 
 // Name of the plugin.
 #define PLUGIN_NAME "Thales"
@@ -18,6 +18,7 @@ extern const uint8_t AMM_POSITION_DOWN[INT256_LENGTH];
 typedef enum {
     BUY_FROM_AMM = 0,
     BUY_FROM_AMM_WITH_REFERRER,
+    SELL_TO_AMM,
     EXERCISE_POSITION,
 } thalesSelector_t;
 

@@ -21,9 +21,9 @@ static void set_market_ui(ethQueryContractUI_t *msg, context_t *context) {
         chainid);
 }
 
-// Set UI for the "Buy" screen.
-static void set_buy_ui(ethQueryContractUI_t *msg, context_t *context) {
-    strlcpy(msg->title, "Buy", msg->titleLength);
+// Set UI for the "Buy"/"Sell" screen.
+static void set_buy_sell_ui(ethQueryContractUI_t *msg, context_t *context) {
+    strlcpy(msg->title, context->selectorIndex == SELL_TO_AMM ? "Sell" : "Buy", msg->titleLength);
 
     uint8_t decimals = context->decimals;
     const char *ticker = context->ticker;
@@ -36,9 +36,11 @@ static void set_buy_ui(ethQueryContractUI_t *msg, context_t *context) {
                    msg->msgLength);
 }
 
-// Set UI for "Pay" screen.
-static void set_pay_ui(ethQueryContractUI_t *msg, const context_t *context) {
-    strlcpy(msg->title, "Pay", msg->titleLength);
+// Set UI for "Pay"/"Receive" screen.
+static void set_pay_receive_ui(ethQueryContractUI_t *msg, const context_t *context) {
+    strlcpy(msg->title,
+            context->selectorIndex == SELL_TO_AMM ? "Receive" : "Pay",
+            msg->titleLength);
 
     amountToString(context->expected_payout,
                    sizeof(context->expected_payout),
@@ -72,6 +74,7 @@ void handle_query_contract_ui(void *parameters) {
             switch (context->selectorIndex) {
                 case BUY_FROM_AMM:
                 case BUY_FROM_AMM_WITH_REFERRER:
+                case SELL_TO_AMM:
                     set_market_ui(msg, context);
                     break;
                 case EXERCISE_POSITION:
@@ -82,10 +85,10 @@ void handle_query_contract_ui(void *parameters) {
             }
             break;
         case 1:
-            set_buy_ui(msg, context);
+            set_buy_sell_ui(msg, context);
             break;
         case 2:
-            set_pay_ui(msg, context);
+            set_pay_receive_ui(msg, context);
             break;
         // Keep this
         default:

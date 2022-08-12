@@ -9,6 +9,7 @@ void handle_finalize(void *parameters) {
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
         case BUY_FROM_AMM_WITH_REFERRER:
+        case SELL_TO_AMM:
             msg->numScreens = 3;
             break;
         case EXERCISE_POSITION:

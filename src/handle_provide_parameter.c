@@ -1,6 +1,6 @@
 #include "thales_plugin.h"
 
-static void handle_buy_from_amm(ethPluginProvideParameter_t *msg, context_t *context) {
+static void handle_amm_buy_sell(ethPluginProvideParameter_t *msg, context_t *context) {
     switch (context->next_param) {
         case MARKET:  // market
             copy_address(context->market, msg->parameter, sizeof(context->market));
@@ -67,7 +67,8 @@ void handle_provide_parameter(void *parameters) {
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
         case BUY_FROM_AMM_WITH_REFERRER:
-            handle_buy_from_amm(msg, context);
+        case SELL_TO_AMM:
+            handle_amm_buy_sell(msg, context);
             break;
         case EXERCISE_POSITION:
             handle_exercise_position(msg, context);

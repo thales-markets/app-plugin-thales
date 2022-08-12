@@ -48,6 +48,7 @@ void handle_init_contract(void *parameters) {
     switch (context->selectorIndex) {
         case BUY_FROM_AMM:
         case BUY_FROM_AMM_WITH_REFERRER:
+        case SELL_TO_AMM:
             context->next_param = MARKET;
             break;
         case EXERCISE_POSITION:

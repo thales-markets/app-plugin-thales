@@ -27,12 +27,15 @@
 // *** Thales AMM contract methods ***
 // Function: buyFromAMM(address market, uint8 position, uint256 amount, uint256 expectedPayout,
 // uint256 additionalSlippage)
-/// Selector: 0x8875eb84
+// Selector: 0x8875eb84
 static const uint32_t THALES_BUY_FROM_AMM_SELECTOR = 0x8875eb84;
 // Function: buyFromAMMWithReferrer(address market, uint8 position, uint256 amount, uint256
 // expectedPayout, uint256 additionalSlippage, address _referrer)
-/// Selector: 0x9f916c9f
+// Selector: 0x9f916c9f
 static const uint32_t THALES_BUY_FROM_AMM_WITH_REFERRER_SELECTOR = 0x9f916c9f;
+// Function: sellToAMM(address market, uint8 position, uint256 amount, uint256 expectedPayout,
+// uint256 additionalSlippage) Selector: 0x3ce1108d
+static const uint32_t THALES_SELL_TO_AMM_SELECTOR = 0x3ce1108d;
 
 // *** Thales Market contract methods ***
 // Function: exerciseOptions()
@@ -41,6 +44,7 @@ static const uint32_t THALES_EXERCISE_POSITION_SELECTOR = 0x85149258;
 
 const uint32_t THALES_SELECTORS[NUM_THALES_SELECTORS] = {THALES_BUY_FROM_AMM_SELECTOR,
                                                          THALES_BUY_FROM_AMM_WITH_REFERRER_SELECTOR,
+                                                         THALES_SELL_TO_AMM_SELECTOR,
                                                          THALES_EXERCISE_POSITION_SELECTOR};
 
 const uint8_t AMM_POSITION_UP[INT256_LENGTH] = {
